@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pandoc \"C:\\\\Users\\\\yurig\\\\Downloads\\\\naka-os-briefing.docx\" -o /tmp/briefing.md)",
+      "Bash(python \"C:\\\\Users\\\\yurig\\\\AppData\\\\Roaming\\\\Claude\\\\local-agent-mode-sessions\\\\skills-plugin\\\\8898db47-f98c-4082-a2c6-72c52fcd0c90\\\\a79c6125-43be-4a34-96f4-8936009da648\\\\skills\\\\docx\\\\scripts\\\\office\\\\unpack.py\" \"C:\\\\Users\\\\yurig\\\\Downloads\\\\naka-os-briefing.docx\" /tmp/briefing-unpacked/)",
+      "Bash(pip install:*)",
+      "Read(//c/tmp/**)",
+      "Bash(python -c \"import os; [print\\(os.path.join\\(r,f\\)\\) for r,d,fs in os.walk\\(''C:\\\\\\\\tmp''\\) for f in fs if f==''document.xml'']\")",
+      "Bash(python -c \"import tempfile; print\\(tempfile.gettempdir\\(\\)\\)\")",
+      "Bash(python \"C:\\\\Users\\\\yurig\\\\AppData\\\\Roaming\\\\Claude\\\\local-agent-mode-sessions\\\\skills-plugin\\\\8898db47-f98c-4082-a2c6-72c52fcd0c90\\\\a79c6125-43be-4a34-96f4-8936009da648\\\\skills\\\\docx\\\\scripts\\\\office\\\\unpack.py\" \"C:\\\\Users\\\\yurig\\\\Downloads\\\\naka-os-briefing.docx\" \"C:\\\\Users\\\\yurig\\\\AppData\\\\Local\\\\Temp\\\\briefing-unpacked\")",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --no-git)",
+      "Bash(mkdir -p /tmp/naka-init)",
+      "Bash(npx create-next-app@latest /tmp/naka-init --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --no-git)",
+      "Bash(rm -rf /tmp/naka-init)",
+      "Bash(npx create-next-app@latest /tmp/naka-init --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --no-git --turbopack 2)",
+      "Bash(1:*)",
+      "Bash(cp -r /tmp/naka-init/* .)",
+      "Bash(cp /tmp/naka-init/.eslintrc* .)",
+      "Bash(cp /tmp/naka-init/.gitignore .)",
+      "Bash(npm install:*)",
+      "Bash(npx next:*)",
+      "Bash(curl -s -X POST \"https://rgkklnyrnyloqlossxqp.supabase.co/auth/v1/signup\" -H \"apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJna2tsbnlybnlsb3Fsb3NzeHFwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1MjEzODYsImV4cCI6MjA4OTA5NzM4Nn0.a0INIPefaSLQlFO3SpFl005vEBYAxu_Tun_iKGEfwpo\" -H \"Content-Type: application/json\" -d '{\"\"\"\"email\"\"\"\":\"\"\"\"gakicreativegroup@gmail.com\"\"\"\",\"\"\"\"password\"\"\"\":\"\"\"\"@$H4R3crFt\"\"\"\",\"\"\"\"data\"\"\"\":{\"\"\"\"nome\"\"\"\":\"\"\"\"Gaki Admin\"\"\"\"}}')",
+      "Bash(python -m json.tool)",
+      "Bash(curl -s -X POST https://rgkklnyrnyloqlossxqp.supabase.co/auth/v1/signup -H 'apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJna2tsbnlybnlsb3Fsb3NzeHFwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1MjEzODYsImV4cCI6MjA4OTA5NzM4Nn0.a0INIPefaSLQlFO3SpFl005vEBYAxu_Tun_iKGEfwpo' -H 'Content-Type: application/json' -d '{\"\"\"\"email\"\"\"\":\"\"\"\"gakicreativegroup@gmail.com\"\"\"\",\"\"\"\"password\"\"\"\":\"\"\"\"@$H4R3crFt\"\"\"\",\"\"\"\"data\"\"\"\":{\"\"\"\"nome\"\"\"\":\"\"\"\"Gaki Admin\"\"\"\"}}')"
+    ]
+  }
+}
