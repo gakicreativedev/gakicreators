@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import {
   Users,
   KanbanSquare,
@@ -11,35 +12,53 @@ import {
   TrendingUp,
 } from "lucide-react";
 import Link from "next/link";
+import { createClient } from "@/lib/supabase/client";
 
 const modules = [
-  {
-    href: "/clientes",
-    label: "Clientes",
-    icon: Users,
-    description: "Gerencie seus clientes",
-  },
-  {
-    href: "/tarefas",
-    label: "Tarefas",
-    icon: KanbanSquare,
-    description: "Kanban e gestão de tarefas",
-  },
-  {
-    href: "/saude",
-    label: "Saúde",
-    icon: HeartPulse,
-    description: "Módulo financeiro",
-  },
+  { href: "/clientes", label: "Clientes", icon: Users, description: "Gerencie seus clientes" },
+  { href: "/tarefas", label: "Tarefas", icon: KanbanSquare, description: "Kanban e gestão de tarefas" },
+  { href: "/saude", label: "Saúde", icon: HeartPulse, description: "Módulo financeiro" },
 ];
 
+function getGreeting() {
+  const h = new Date().getHours();
+  if (h < 12) return "Bom dia";
+  if (h < 18) return "Boa tarde";
+  return "Boa noite";
+}
+
 export default function HomePage() {
+  const [clientesAtivos, setClientesAtivos] = useState(0);
+  const [userName, setUserName] = useState("");
+  const supabase = createClient();
+
+  useEffect(() => {
+    async function load() {
+      const { count } = await supabase
+        .from("clientes")
+        .select("*", { count: "exact", head: true })
+        .eq("status", "ativo");
+      setClientesAtivos(count || 0);
+
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("nome")
+          .eq("id", user.id)
+          .single();
+        if (profile) setUserName(profile.nome);
+      }
+    }
+    load();
+  }, [supabase]);
+
   return (
     <div className="p-6 md:p-8 max-w-6xl mx-auto">
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-text-primary">
-          Bom dia! 👋
+          {getGreeting()}{userName ? `, ${userName.split(" ")[0]}` : ""}!
         </h1>
         <p className="text-text-secondary mt-1">
           Aqui está o resumo do seu dia no Naka OS.
@@ -86,7 +105,6 @@ export default function HomePage() {
 
       {/* Widgets */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* Tarefas urgentes */}
         <div className="rounded-2xl bg-bg-card border border-border p-5">
           <div className="flex items-center gap-2 mb-4">
             <AlertCircle className="w-4 h-4 text-warning" />
@@ -99,26 +117,20 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Contas a vencer */}
         <div className="rounded-2xl bg-bg-card border border-border p-5">
           <div className="flex items-center gap-2 mb-4">
             <Clock className="w-4 h-4 text-danger" />
-            <h3 className="font-semibold text-text-primary text-sm">
-              Contas a vencer
-            </h3>
+            <h3 className="font-semibold text-text-primary text-sm">Contas a vencer</h3>
           </div>
           <div className="text-center py-6">
             <p className="text-text-muted text-sm">Nenhuma conta próxima do vencimento</p>
           </div>
         </div>
 
-        {/* Resumo financeiro */}
         <div className="rounded-2xl bg-bg-card border border-border p-5">
           <div className="flex items-center gap-2 mb-4">
             <TrendingUp className="w-4 h-4 text-success" />
-            <h3 className="font-semibold text-text-primary text-sm">
-              Resumo financeiro do mês
-            </h3>
+            <h3 className="font-semibold text-text-primary text-sm">Resumo financeiro do mês</h3>
           </div>
           <div className="grid grid-cols-3 gap-4">
             <div>
@@ -136,17 +148,16 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Clientes ativos */}
         <div className="rounded-2xl bg-bg-card border border-border p-5">
           <div className="flex items-center gap-2 mb-4">
             <Users className="w-4 h-4 text-accent" />
-            <h3 className="font-semibold text-text-primary text-sm">
-              Clientes ativos
-            </h3>
+            <h3 className="font-semibold text-text-primary text-sm">Clientes ativos</h3>
           </div>
           <div className="text-center py-6">
-            <p className="text-3xl font-bold text-accent">0</p>
-            <p className="text-text-muted text-sm mt-1">clientes ativos</p>
+            <p className="text-3xl font-bold text-accent">{clientesAtivos}</p>
+            <p className="text-text-muted text-sm mt-1">
+              cliente{clientesAtivos !== 1 ? "s" : ""} ativo{clientesAtivos !== 1 ? "s" : ""}
+            </p>
           </div>
         </div>
       </div>
