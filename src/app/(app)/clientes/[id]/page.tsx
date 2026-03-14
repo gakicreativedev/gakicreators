@@ -20,6 +20,7 @@ import { useCliente } from "@/lib/hooks/use-clientes";
 import { createClient } from "@/lib/supabase/client";
 import { Modal } from "@/components/ui/modal";
 import { ClienteFormComponent } from "@/components/clientes/cliente-form";
+import { BrandHubTab } from "@/components/clientes/brand-hub-tab";
 import type { ClienteForm, ClientStatus } from "@/lib/types";
 
 const statusConfig: Record<ClientStatus, { label: string; className: string }> = {
@@ -183,7 +184,7 @@ export default function ClienteDetailPage({ params }: { params: Promise<{ id: st
 
       {/* Tab Content */}
       {activeTab === "dados" && <DadosTab cliente={cliente} />}
-      {activeTab === "brand" && <PlaceholderTab label="Brand Hub" description="O Brand Hub será implementado na Fase 3." />}
+      {activeTab === "brand" && <BrandHubTab clienteId={id} />}
       {activeTab === "tarefas" && <PlaceholderTab label="Tarefas" description="As tarefas vinculadas serão implementadas na Fase 4." />}
       {activeTab === "financeiro" && <PlaceholderTab label="Financeiro" description="O financeiro do cliente será implementado na Fase 5." />}
 
