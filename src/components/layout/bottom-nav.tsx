@@ -7,15 +7,16 @@ import {
   Users,
   KanbanSquare,
   HeartPulse,
+  Palette,
   Settings,
 } from "lucide-react";
 
 const navItems = [
   { href: "/", label: "Home", icon: Home },
   { href: "/clientes", label: "Clientes", icon: Users },
+  { href: "/brand-hub", label: "Brands", icon: Palette },
   { href: "/tarefas", label: "Tarefas", icon: KanbanSquare },
   { href: "/saude", label: "Saúde", icon: HeartPulse },
-  { href: "/configuracoes", label: "Config", icon: Settings },
 ];
 
 export function BottomNav() {
