@@ -30,6 +30,9 @@ function getGreeting() {
 export default function HomePage() {
   const [clientesAtivos, setClientesAtivos] = useState(0);
   const [userName, setUserName] = useState("");
+  const [resumo, setResumo] = useState({ entradas: 0, saidas: 0, saldo: 0 });
+  const [tarefasUrgentes, setTarefasUrgentes] = useState<{ id: string; titulo: string; prazo: string }[]>([]);
+  const [contasVencer, setContasVencer] = useState<{ id: string; descricao: string; valor: number; data: string }[]>([]);
   const supabase = createClient();
 
   useEffect(() => {
@@ -49,6 +52,56 @@ export default function HomePage() {
           .single();
         if (profile) setUserName(profile.nome);
       }
+
+      // Financial summary for current month
+      const now = new Date();
+      const firstDay = new Date(now.getFullYear(), now.getMonth(), 1).toISOString().split("T")[0];
+      const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0).toISOString().split("T")[0];
+
+      const { data: movs } = await supabase
+        .from("movimentacoes")
+        .select("categoria, valor, status")
+        .gte("data", firstDay)
+        .lte("data", lastDay);
+
+      if (movs) {
+        const r = movs.reduce(
+          (acc, m) => {
+            if (m.status === "cancelado") return acc;
+            const val = Number(m.valor);
+            if (m.categoria === "receita") acc.entradas += val;
+            else acc.saidas += val;
+            acc.saldo = acc.entradas - acc.saidas;
+            return acc;
+          },
+          { entradas: 0, saidas: 0, saldo: 0 }
+        );
+        setResumo(r);
+      }
+
+      // Urgent tasks (due today or overdue)
+      const today = now.toISOString().split("T")[0];
+      const { data: urgentes } = await supabase
+        .from("tarefas")
+        .select("id, titulo, prazo")
+        .not("prazo", "is", null)
+        .lte("prazo", today)
+        .order("prazo");
+
+      if (urgentes) setTarefasUrgentes(urgentes.slice(0, 5));
+
+      // Upcoming bills (pending movimentações in next 7 days)
+      const in7days = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000).toISOString().split("T")[0];
+      const { data: contas } = await supabase
+        .from("movimentacoes")
+        .select("id, descricao, valor, data")
+        .eq("status", "pendente")
+        .neq("categoria", "receita")
+        .gte("data", today)
+        .lte("data", in7days)
+        .order("data");
+
+      if (contas) setContasVencer(contas.slice(0, 5));
     }
     load();
   }, [supabase]);
@@ -112,9 +165,22 @@ export default function HomePage() {
               Tarefas com prazo hoje ou atrasadas
             </h3>
           </div>
-          <div className="text-center py-6">
-            <p className="text-text-muted text-sm">Nenhuma tarefa urgente</p>
-          </div>
+          {tarefasUrgentes.length === 0 ? (
+            <div className="text-center py-6">
+              <p className="text-text-muted text-sm">Nenhuma tarefa urgente</p>
+            </div>
+          ) : (
+            <div className="space-y-2">
+              {tarefasUrgentes.map((t) => (
+                <Link key={t.id} href="/tarefas" className="flex items-center justify-between p-2 rounded-lg hover:bg-bg-hover transition-colors">
+                  <span className="text-sm text-text-primary truncate">{t.titulo}</span>
+                  <span className="text-xs text-danger flex-shrink-0 ml-2">
+                    {new Date(t.prazo + "T12:00:00").toLocaleDateString("pt-BR")}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="rounded-2xl bg-bg-card border border-border p-5">
@@ -122,9 +188,22 @@ export default function HomePage() {
             <Clock className="w-4 h-4 text-danger" />
             <h3 className="font-semibold text-text-primary text-sm">Contas a vencer</h3>
           </div>
-          <div className="text-center py-6">
-            <p className="text-text-muted text-sm">Nenhuma conta próxima do vencimento</p>
-          </div>
+          {contasVencer.length === 0 ? (
+            <div className="text-center py-6">
+              <p className="text-text-muted text-sm">Nenhuma conta próxima do vencimento</p>
+            </div>
+          ) : (
+            <div className="space-y-2">
+              {contasVencer.map((c) => (
+                <Link key={c.id} href="/saude" className="flex items-center justify-between p-2 rounded-lg hover:bg-bg-hover transition-colors">
+                  <span className="text-sm text-text-primary truncate">{c.descricao || "Sem descrição"}</span>
+                  <span className="text-xs text-danger flex-shrink-0 ml-2">
+                    {Number(c.valor).toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="rounded-2xl bg-bg-card border border-border p-5">
@@ -135,15 +214,15 @@ export default function HomePage() {
           <div className="grid grid-cols-3 gap-4">
             <div>
               <p className="text-xs text-text-muted">Entradas</p>
-              <p className="text-lg font-bold text-success">R$ 0</p>
+              <p className="text-lg font-bold text-success">{resumo.entradas.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</p>
             </div>
             <div>
               <p className="text-xs text-text-muted">Saídas</p>
-              <p className="text-lg font-bold text-danger">R$ 0</p>
+              <p className="text-lg font-bold text-danger">{resumo.saidas.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</p>
             </div>
             <div>
               <p className="text-xs text-text-muted">Saldo</p>
-              <p className="text-lg font-bold text-text-primary">R$ 0</p>
+              <p className={`text-lg font-bold ${resumo.saldo >= 0 ? "text-success" : "text-danger"}`}>{resumo.saldo.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</p>
             </div>
           </div>
         </div>

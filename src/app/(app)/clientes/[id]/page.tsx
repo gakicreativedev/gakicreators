@@ -22,6 +22,7 @@ import { Modal } from "@/components/ui/modal";
 import { ClienteFormComponent } from "@/components/clientes/cliente-form";
 import { BrandHubTab } from "@/components/clientes/brand-hub-tab";
 import { TarefasTab } from "@/components/clientes/tarefas-tab";
+import { FinanceiroTab } from "@/components/clientes/financeiro-tab";
 import type { ClienteForm, ClientStatus } from "@/lib/types";
 
 const statusConfig: Record<ClientStatus, { label: string; className: string }> = {
@@ -187,7 +188,7 @@ export default function ClienteDetailPage({ params }: { params: Promise<{ id: st
       {activeTab === "dados" && <DadosTab cliente={cliente} />}
       {activeTab === "brand" && <BrandHubTab clienteId={id} />}
       {activeTab === "tarefas" && <TarefasTab clienteId={id} />}
-      {activeTab === "financeiro" && <PlaceholderTab label="Financeiro" description="O financeiro do cliente será implementado na Fase 5." />}
+      {activeTab === "financeiro" && <FinanceiroTab clienteId={id} />}
 
       {/* Edit Modal */}
       <Modal open={editing} onClose={() => setEditing(false)} title="Editar Cliente" maxWidth="max-w-3xl">
@@ -285,11 +286,3 @@ function DadosTab({ cliente }: { cliente: NonNullable<ReturnType<typeof useClien
   );
 }
 
-function PlaceholderTab({ label, description }: { label: string; description: string }) {
-  return (
-    <div className="text-center py-16 rounded-2xl bg-bg-card border border-border">
-      <p className="text-lg font-semibold text-text-primary mb-2">{label}</p>
-      <p className="text-text-muted text-sm">{description}</p>
-    </div>
-  );
-}
