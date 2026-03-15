@@ -26,9 +26,9 @@ export function Modal({ open, onClose, title, children, maxWidth = "max-w-2xl" }
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-[10vh] bg-black/60 backdrop-blur-sm overflow-y-auto pb-10">
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-[10vh] bg-black/40 backdrop-blur-md overflow-y-auto pb-10">
       <div
-        className={`w-full ${maxWidth} mx-4 rounded-2xl bg-bg-card border border-border shadow-2xl`}
+        className={`w-full ${maxWidth} mx-4 rounded-2xl glass border border-border`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}

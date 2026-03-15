@@ -16,8 +16,8 @@ export const themes: Theme[] = [
   {
     id: "azul-profundo",
     name: "Azul Profundo",
-    description: "Elegante e minimalista",
-    preview: { bg: "#0c0f14", card: "#181c26", accent: "#5a9cf5", text: "#e8eaed" },
+    description: "Glass elegante e minimalista",
+    preview: { bg: "#0a0d12", card: "#161b26", accent: "#5a9cf5", text: "#e8eaed" },
   },
   {
     id: "azul-claro",
