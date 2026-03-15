@@ -126,6 +126,57 @@ body {
   border-color: var(--glass-border);
 }
 
+/* Glass inputs & buttons */
+.glass-input {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.2s ease;
+}
+
+.glass-input:focus {
+  border-color: rgba(255, 255, 255, 0.2);
+  outline: none;
+}
+
+.glass-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.2s ease;
+}
+
+.glass-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+/* Light theme overrides */
+[data-theme="azul-claro"] .glass-input,
+[data-theme="off-white"] .glass-input {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="azul-claro"] .glass-input:focus,
+[data-theme="off-white"] .glass-input:focus {
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="azul-claro"] .glass-btn,
+[data-theme="off-white"] .glass-btn {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="azul-claro"] .glass-btn:hover,
+[data-theme="off-white"] .glass-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.16);
+}
+
 /* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 5px;

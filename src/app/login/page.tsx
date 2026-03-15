@@ -38,20 +38,20 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-bg-primary px-4">
       <div className="w-full max-w-sm">
         {/* Logo */}
-        <div className="text-center mb-8">
-          <div className="w-14 h-14 rounded-2xl bg-accent flex items-center justify-center mx-auto mb-4">
-            <span className="text-white font-bold text-2xl">N</span>
+        <div className="text-center mb-10">
+          <div className="w-14 h-14 rounded-2xl bg-accent/15 flex items-center justify-center mx-auto mb-4">
+            <span className="text-accent font-bold text-2xl">N</span>
           </div>
-          <h1 className="text-2xl font-bold text-text-primary">Naka OS</h1>
+          <h1 className="text-2xl font-bold text-text-primary tracking-tight">Naka OS</h1>
           <p className="text-sm text-text-muted mt-1">
             Gaki — Marketing Digital
           </p>
         </div>
 
         {/* Form */}
-        <form onSubmit={handleLogin} className="space-y-4">
+        <form onSubmit={handleLogin} className="space-y-5">
           <div>
-            <label className="block text-sm font-medium text-text-secondary mb-1.5">
+            <label className="block text-xs font-medium text-text-muted mb-2 uppercase tracking-wider">
               E-mail
             </label>
             <input
@@ -60,14 +60,19 @@ export default function LoginPage() {
               onChange={(e) => setEmail(e.target.value)}
               required
               placeholder="seu@email.com"
-              className="w-full px-4 py-3 rounded-xl bg-bg-card border border-border text-text-primary placeholder:text-text-muted focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
+              className="glass-input w-full px-4 py-3 rounded-2xl text-text-primary placeholder:text-text-muted text-sm"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-text-secondary mb-1.5">
-              Senha
-            </label>
+            <div className="flex items-center justify-between mb-2">
+              <label className="block text-xs font-medium text-text-muted uppercase tracking-wider">
+                Senha
+              </label>
+              <button type="button" className="text-xs text-text-muted hover:text-text-secondary transition-colors">
+                Esqueci minha senha
+              </button>
+            </div>
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
@@ -75,7 +80,7 @@ export default function LoginPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 placeholder="••••••••"
-                className="w-full px-4 py-3 rounded-xl bg-bg-card border border-border text-text-primary placeholder:text-text-muted focus:border-accent focus:ring-1 focus:ring-accent transition-colors pr-12"
+                className="glass-input w-full px-4 py-3 rounded-2xl text-text-primary placeholder:text-text-muted text-sm pr-12"
               />
               <button
                 type="button"
@@ -83,9 +88,9 @@ export default function LoginPage() {
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted hover:text-text-secondary transition-colors"
               >
                 {showPassword ? (
-                  <EyeOff className="w-5 h-5" />
+                  <EyeOff className="w-4.5 h-4.5" />
                 ) : (
-                  <Eye className="w-5 h-5" />
+                  <Eye className="w-4.5 h-4.5" />
                 )}
               </button>
             </div>
@@ -98,7 +103,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 rounded-xl bg-accent hover:bg-accent-hover text-white font-medium transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+            className="glass-btn w-full py-3.5 rounded-2xl text-text-primary font-medium text-sm disabled:opacity-50 flex items-center justify-center gap-2"
           >
             {loading ? (
               <>
@@ -109,6 +114,16 @@ export default function LoginPage() {
               "Entrar"
             )}
           </button>
+
+          <div className="flex items-center gap-3 my-2">
+            <div className="flex-1 h-px bg-border" />
+            <span className="text-xs text-text-muted">ou</span>
+            <div className="flex-1 h-px bg-border" />
+          </div>
+
+          <p className="text-center text-xs text-text-muted">
+            Acesso restrito aos membros da equipe Gaki
+          </p>
         </form>
       </div>
     </div>
