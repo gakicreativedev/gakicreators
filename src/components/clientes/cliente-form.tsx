@@ -93,7 +93,7 @@ export function ClienteFormComponent({ cliente, onSubmit, onCancel }: ClienteFor
   };
 
   const inputClass =
-    "w-full px-3 py-2.5 rounded-xl bg-bg-primary border border-border text-text-primary placeholder:text-text-muted focus:border-accent focus:ring-1 focus:ring-accent transition-colors text-sm disabled:opacity-50";
+    "w-full px-3 py-2.5 rounded-xl glass-input text-text-primary placeholder:text-text-muted focus:border-accent focus:ring-1 focus:ring-accent transition-colors text-sm disabled:opacity-50";
   const labelClass = "block text-sm font-medium text-text-secondary mb-1.5";
 
   return (

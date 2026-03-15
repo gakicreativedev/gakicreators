@@ -60,7 +60,7 @@ export default function BrandHubPage() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Buscar marca..."
-          className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-bg-card border border-border text-text-primary text-sm placeholder:text-text-muted focus:border-accent focus:ring-1 focus:ring-accent"
+          className="w-full pl-10 pr-4 py-2.5 rounded-xl glass-input text-text-primary text-sm placeholder:text-text-muted focus:border-accent focus:ring-1 focus:ring-accent"
         />
       </div>
 

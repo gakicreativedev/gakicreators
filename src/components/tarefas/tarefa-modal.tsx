@@ -111,7 +111,7 @@ export function TarefaModal({
           <select
             value={prioridade}
             onChange={(e) => setPrioridade(e.target.value as Prioridade)}
-            className="px-3 py-1.5 rounded-lg bg-bg-primary border border-border text-text-primary text-xs"
+            className="px-3 py-1.5 rounded-lg glass-input text-text-primary text-xs"
           >
             {Object.entries(prioridadeConfig).map(([key, cfg]) => (
               <option key={key} value={key}>{cfg.label}</option>
@@ -124,7 +124,7 @@ export function TarefaModal({
               type="date"
               value={prazo}
               onChange={(e) => setPrazo(e.target.value)}
-              className="px-2 py-1.5 rounded-lg bg-bg-primary border border-border text-text-primary text-xs"
+              className="px-2 py-1.5 rounded-lg glass-input text-text-primary text-xs"
             />
           </div>
 
@@ -174,7 +174,7 @@ export function TarefaModal({
                   onChange={(e) => setNovaTag(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && handleCreateTag()}
                   placeholder="Nome da tag"
-                  className="px-2 py-1 rounded-lg bg-bg-primary border border-border text-text-primary text-xs w-28"
+                  className="px-2 py-1 rounded-lg glass-input text-text-primary text-xs w-28"
                   autoFocus
                 />
                 <button onClick={handleCreateTag} className="text-accent">
@@ -204,7 +204,7 @@ export function TarefaModal({
             onChange={(e) => setDescricao(e.target.value)}
             placeholder="Adicione uma descrição..."
             rows={3}
-            className="w-full px-3 py-2.5 rounded-xl bg-bg-primary border border-border text-text-primary text-sm placeholder:text-text-muted resize-none focus:border-accent focus:ring-1 focus:ring-accent"
+            className="w-full px-3 py-2.5 rounded-xl glass-input text-text-primary text-sm placeholder:text-text-muted resize-none focus:border-accent focus:ring-1 focus:ring-accent"
           />
         </div>
 
@@ -265,7 +265,7 @@ export function TarefaModal({
               onChange={(e) => setNovaEtapa(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleAddEtapa()}
               placeholder="Adicionar etapa..."
-              className="flex-1 px-3 py-2 rounded-lg bg-bg-primary border border-border text-text-primary text-sm placeholder:text-text-muted"
+              className="flex-1 px-3 py-2 rounded-lg glass-input text-text-primary text-sm placeholder:text-text-muted"
             />
             <button
               onClick={handleAddEtapa}
@@ -372,7 +372,7 @@ function ComentariosSection({ tarefaId }: { tarefaId: string }) {
           onChange={(e) => setTexto(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleSend()}
           placeholder="Escreva um comentário..."
-          className="flex-1 px-3 py-2 rounded-lg bg-bg-primary border border-border text-text-primary text-sm placeholder:text-text-muted"
+          className="flex-1 px-3 py-2 rounded-lg glass-input text-text-primary text-sm placeholder:text-text-muted"
         />
         <button
           onClick={handleSend}

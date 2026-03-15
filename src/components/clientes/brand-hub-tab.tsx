@@ -143,7 +143,7 @@ function LogosSection({
           <select
             value={selectedCat}
             onChange={(e) => setSelectedCat(e.target.value)}
-            className="px-2 py-1.5 rounded-lg bg-bg-primary border border-border text-text-primary text-xs"
+            className="px-2 py-1.5 rounded-lg glass-input text-text-primary text-xs"
           >
             {LOGO_CATEGORIAS.map((c) => (
               <option key={c} value={c}>{c}</option>
@@ -282,7 +282,7 @@ function CoresSection({
               value={newCor.nome}
               onChange={(e) => setNewCor({ ...newCor, nome: e.target.value })}
               placeholder="Ex: Azul Principal"
-              className="w-full px-3 py-2 rounded-lg bg-bg-card border border-border text-text-primary text-sm"
+              className="w-full px-3 py-2 rounded-lg glass-input text-text-primary text-sm"
               autoFocus
             />
           </div>
@@ -299,7 +299,7 @@ function CoresSection({
                 type="text"
                 value={newCor.hex}
                 onChange={(e) => setNewCor({ ...newCor, hex: e.target.value })}
-                className="w-24 px-2 py-2 rounded-lg bg-bg-card border border-border text-text-primary text-sm"
+                className="w-24 px-2 py-2 rounded-lg glass-input text-text-primary text-sm"
               />
             </div>
           </div>
@@ -397,7 +397,7 @@ function FontesSection({
               value={newFonte.nome}
               onChange={(e) => setNewFonte({ ...newFonte, nome: e.target.value })}
               placeholder="Ex: Inter, Montserrat"
-              className="w-full px-3 py-2 rounded-lg bg-bg-card border border-border text-text-primary text-sm"
+              className="w-full px-3 py-2 rounded-lg glass-input text-text-primary text-sm"
               autoFocus
             />
           </div>
@@ -408,7 +408,7 @@ function FontesSection({
               value={newFonte.link}
               onChange={(e) => setNewFonte({ ...newFonte, link: e.target.value })}
               placeholder="https://fonts.google.com/..."
-              className="w-full px-3 py-2 rounded-lg bg-bg-card border border-border text-text-primary text-sm"
+              className="w-full px-3 py-2 rounded-lg glass-input text-text-primary text-sm"
             />
           </div>
           <button onClick={addFonte} className="px-4 py-2 rounded-lg bg-accent text-white text-sm font-medium">
@@ -486,7 +486,7 @@ function TextFieldsSection({
                     onChange={(e) => setTempValue(e.target.value)}
                     placeholder={field.placeholder}
                     rows={3}
-                    className="w-full px-3 py-2 rounded-lg bg-bg-card border border-border text-text-primary text-sm resize-none focus:border-accent focus:ring-1 focus:ring-accent"
+                    className="w-full px-3 py-2 rounded-lg glass-input text-text-primary text-sm resize-none focus:border-accent focus:ring-1 focus:ring-accent"
                     autoFocus
                   />
                   <div className="flex gap-2">

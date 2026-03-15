@@ -205,7 +205,7 @@ export default function ConfiguracoesPage() {
                     type="text"
                     value={editNome}
                     onChange={(e) => setEditNome(e.target.value)}
-                    className="flex-1 px-3 py-2 rounded-xl bg-bg-primary border border-border text-text-primary text-sm focus:border-accent focus:ring-1 focus:ring-accent"
+                    className="flex-1 px-3 py-2 rounded-xl glass-input text-text-primary text-sm focus:border-accent focus:ring-1 focus:ring-accent"
                   />
                   <button
                     onClick={handleSaveProfile}

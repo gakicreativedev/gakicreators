@@ -129,7 +129,7 @@ export default function TarefasPage() {
             className={`flex items-center gap-2 px-3 py-2 rounded-xl border text-sm transition-colors ${
               activeFilters > 0
                 ? "bg-accent/15 text-accent border-accent/30"
-                : "bg-bg-card text-text-secondary border-border hover:bg-bg-hover"
+                : "glass-btn text-text-secondary hover:bg-bg-hover"
             }`}
           >
             <Filter className="w-4 h-4" />
@@ -151,7 +151,7 @@ export default function TarefasPage() {
             <select
               value={filterPrioridade}
               onChange={(e) => setFilterPrioridade(e.target.value as Prioridade | "todas")}
-              className="px-2 py-1.5 rounded-lg bg-bg-primary border border-border text-text-primary text-xs"
+              className="px-2 py-1.5 rounded-lg glass-input text-text-primary text-xs"
             >
               <option value="todas">Todas</option>
               <option value="urgente">Urgente</option>
@@ -165,7 +165,7 @@ export default function TarefasPage() {
             <select
               value={filterTag}
               onChange={(e) => setFilterTag(e.target.value)}
-              className="px-2 py-1.5 rounded-lg bg-bg-primary border border-border text-text-primary text-xs"
+              className="px-2 py-1.5 rounded-lg glass-input text-text-primary text-xs"
             >
               <option value="todas">Todas</option>
               {tags.map((t) => (
@@ -264,7 +264,7 @@ export default function TarefasPage() {
                                 if (e.key === "Escape") setAddingToColumn(null);
                               }}
                               placeholder="Título da tarefa..."
-                              className="w-full px-2 py-1.5 rounded-lg bg-bg-primary border border-border text-text-primary text-sm mb-2"
+                              className="w-full px-2 py-1.5 rounded-lg glass-input text-text-primary text-sm mb-2"
                               autoFocus
                             />
                             <div className="flex gap-2">

@@ -126,7 +126,7 @@ export default function SaudePage() {
             placeholder="Buscar por descrição..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-bg-card border border-border text-text-primary placeholder:text-text-muted text-sm focus:border-accent focus:ring-1 focus:ring-accent"
+            className="w-full pl-10 pr-4 py-2.5 rounded-xl glass-input text-text-primary placeholder:text-text-muted text-sm focus:border-accent focus:ring-1 focus:ring-accent"
           />
         </div>
         <button
@@ -134,7 +134,7 @@ export default function SaudePage() {
           className={`flex items-center gap-2 px-3 py-2.5 rounded-xl border text-sm transition-colors ${
             activeFilters > 0
               ? "bg-accent/15 text-accent border-accent/30"
-              : "bg-bg-card text-text-secondary border-border hover:bg-bg-hover"
+              : "glass-btn text-text-secondary hover:bg-bg-hover"
           }`}
         >
           <Filter className="w-4 h-4" />
@@ -154,7 +154,7 @@ export default function SaudePage() {
             <select
               value={filterCategoria}
               onChange={(e) => setFilterCategoria(e.target.value as CategoriaMovimentacao | "todas")}
-              className="px-2 py-1.5 rounded-lg bg-bg-primary border border-border text-text-primary text-xs"
+              className="px-2 py-1.5 rounded-lg glass-input text-text-primary text-xs"
             >
               <option value="todas">Todas</option>
               {Object.entries(categoriaConfig).map(([key, cfg]) => (
@@ -167,7 +167,7 @@ export default function SaudePage() {
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value as StatusMovimentacao | "todos")}
-              className="px-2 py-1.5 rounded-lg bg-bg-primary border border-border text-text-primary text-xs"
+              className="px-2 py-1.5 rounded-lg glass-input text-text-primary text-xs"
             >
               <option value="todos">Todos</option>
               {Object.entries(statusConfig).map(([key, cfg]) => (

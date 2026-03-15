@@ -70,7 +70,7 @@ export default function ClientesPage() {
             placeholder="Buscar por nome..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-bg-card border border-border text-text-primary placeholder:text-text-muted focus:border-accent focus:ring-1 focus:ring-accent transition-colors text-sm"
+            className="w-full pl-10 pr-4 py-2.5 rounded-xl glass-input text-text-primary placeholder:text-text-muted focus:border-accent focus:ring-1 focus:ring-accent transition-colors text-sm"
           />
         </div>
         <div className="flex gap-2">

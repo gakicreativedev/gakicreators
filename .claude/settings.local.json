@@ -21,7 +21,8 @@
       "Bash(npx next:*)",
       "Bash(curl -s -X POST \"https://rgkklnyrnyloqlossxqp.supabase.co/auth/v1/signup\" -H \"apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJna2tsbnlybnlsb3Fsb3NzeHFwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1MjEzODYsImV4cCI6MjA4OTA5NzM4Nn0.a0INIPefaSLQlFO3SpFl005vEBYAxu_Tun_iKGEfwpo\" -H \"Content-Type: application/json\" -d '{\"\"\"\"email\"\"\"\":\"\"\"\"gakicreativegroup@gmail.com\"\"\"\",\"\"\"\"password\"\"\"\":\"\"\"\"@$H4R3crFt\"\"\"\",\"\"\"\"data\"\"\"\":{\"\"\"\"nome\"\"\"\":\"\"\"\"Gaki Admin\"\"\"\"}}')",
       "Bash(python -m json.tool)",
-      "Bash(curl -s -X POST https://rgkklnyrnyloqlossxqp.supabase.co/auth/v1/signup -H 'apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJna2tsbnlybnlsb3Fsb3NzeHFwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1MjEzODYsImV4cCI6MjA4OTA5NzM4Nn0.a0INIPefaSLQlFO3SpFl005vEBYAxu_Tun_iKGEfwpo' -H 'Content-Type: application/json' -d '{\"\"\"\"email\"\"\"\":\"\"\"\"gakicreativegroup@gmail.com\"\"\"\",\"\"\"\"password\"\"\"\":\"\"\"\"@$H4R3crFt\"\"\"\",\"\"\"\"data\"\"\"\":{\"\"\"\"nome\"\"\"\":\"\"\"\"Gaki Admin\"\"\"\"}}')"
+      "Bash(curl -s -X POST https://rgkklnyrnyloqlossxqp.supabase.co/auth/v1/signup -H 'apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJna2tsbnlybnlsb3Fsb3NzeHFwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1MjEzODYsImV4cCI6MjA4OTA5NzM4Nn0.a0INIPefaSLQlFO3SpFl005vEBYAxu_Tun_iKGEfwpo' -H 'Content-Type: application/json' -d '{\"\"\"\"email\"\"\"\":\"\"\"\"gakicreativegroup@gmail.com\"\"\"\",\"\"\"\"password\"\"\"\":\"\"\"\"@$H4R3crFt\"\"\"\",\"\"\"\"data\"\"\"\":{\"\"\"\"nome\"\"\"\":\"\"\"\"Gaki Admin\"\"\"\"}}')",
+      "Bash(ls \"C:\\\\Users\\\\yurig\\\\Documents\\\\GitHub\\\\gakicreators\\\\.claude\\\\worktrees\\\\xenodochial-burnell\\\\src\\\\app\\\\\\(app\\)\"\")"
     ]
   }
 }
